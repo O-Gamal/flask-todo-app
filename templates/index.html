@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  {% if todos|length < 1 %}
+    <p>No todos yet. Add one below!</p>
+  {% else %}
+  <ul>
+    {% for todo in todos %}
+    <li class="todo-item">
+        <a class="todo-title {% if todo.is_done %}completed{% endif %}" href="/toggle/{{ todo.id }}"><span>{{ todo }}</span></a>
+        <a class="delete-btn" href="/delete/{{ todo.id }}">X</a>
+      </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  <form action="{{ url_for('add_todo') }}" method="post">
+    <input type="text" name="todo" id="todo" placeholder="Add a new todo...">
+    <button type="submit">Add</button>
+  </form>
+{% endblock %}
