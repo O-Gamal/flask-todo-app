@@ -43,3 +43,5 @@ jobs:
           repository_name: 'omargamal19/demo-todo-app'
           user_name: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+          image_version: 'v1.0'
+          docker_file: '.'
